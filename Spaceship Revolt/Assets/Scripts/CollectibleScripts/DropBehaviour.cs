@@ -10,7 +10,23 @@ public class DropBehaviour : MonoBehaviour
         gameObject.layer = 8;
         gameObject.transform.position = newPosition;
         Rigidbody2D tempReference = gameObject.GetComponent<Rigidbody2D>();
-        tempReference.drag = 0.5f;
+        switch (gameObject.tag)
+        {
+            case "Worker":
+                tempReference.drag = 0.5f;
+                tempReference.mass = 1;
+                break;
+            case "Research":
+                tempReference.drag = 0.5f;
+                tempReference.mass = 1;
+                break;
+            case "WarCentre":
+                tempReference.drag = 0.5f;
+                tempReference.mass = 1;
+                break;
+            default:
+                break;
+        }
         tempReference.constraints = RigidbodyConstraints2D.None;
         tempReference.constraints = RigidbodyConstraints2D.FreezeRotation;
         tempReference.AddForce(force, ForceMode2D.Impulse);
@@ -25,11 +41,42 @@ public class DropBehaviour : MonoBehaviour
 
     public void AnchorNow()
     {
-        gameObject.GetComponent<Rigidbody2D>().drag = 3f;
+        Rigidbody2D tempReference = gameObject.GetComponent<Rigidbody2D>();
+        switch (gameObject.tag)
+        {
+            case "Worker":
+                tempReference.drag = 3f;
+                tempReference.mass = 500f;
+                break;
+            case "Research":
+                tempReference.drag = 3f;
+                tempReference.mass = 10000;
+                break;
+            case "WarCentre":
+                tempReference.drag = 3f;
+                tempReference.mass = 10000;
+                break;
+            default:
+                break;
+        }
     }
     public void StaticLock()
     {
         Rigidbody2D tempReference = gameObject.GetComponent<Rigidbody2D>();
-        tempReference.constraints = RigidbodyConstraints2D.FreezePositionX|RigidbodyConstraints2D.FreezePositionY| RigidbodyConstraints2D.FreezeRotation;
+        switch (gameObject.tag)
+        {
+            case "Worker":
+                tempReference.constraints = RigidbodyConstraints2D.FreezeRotation;
+                break;
+            case "Research":
+                tempReference.constraints = RigidbodyConstraints2D.FreezeRotation;
+                break;
+            case "WarCentre":
+                tempReference.constraints = RigidbodyConstraints2D.FreezeRotation;
+                break;
+            default:
+                break;
+        }
+
     }
 }

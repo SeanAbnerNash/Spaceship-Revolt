@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f441fc4390c144b8ac594386660c0, type: 3}
+  m_Name: ResearchRecord
+  m_EditorClassIdentifier: 
+  researchValueOfWorker: 1
+  researchList:
+  - researchName: Tech 1
+    researchID: RT01
+    currentResearch: 0
+    maxResearch: 30
+    researched: 0
+    cargoWeight: 1
+  - researchName: Tech 2
+    researchID: RT02
+    currentResearch: 0
+    maxResearch: 30
+    researched: 0
+    cargoWeight: 1
+  - researchName: Tech 3
+    researchID: RT03
+    currentResearch: 0
+    maxResearch: 30
+    researched: 0
+    cargoWeight: 1
+  - researchName: Tech 4
+    researchID: RT04
+    currentResearch: 0
+    maxResearch: 45
+    researched: 0
+    cargoWeight: 1
+  - researchName: Tech 5
+    researchID: RT05
+    currentResearch: 0
+    maxResearch: 45
+    researched: 0
+    cargoWeight: 1

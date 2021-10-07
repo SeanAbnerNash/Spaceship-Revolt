@@ -159,6 +159,7 @@ public class PlayerController : MonoBehaviour
         {
             currentCargo += tempStat.cargoWeight;
             cargoList.Add(objectReference);
+            GameData.Instance.SetCargo(cargoList);
             return true;
         }
         return false;
@@ -171,9 +172,10 @@ public class PlayerController : MonoBehaviour
             CargoStat tempStat = cargoList[0].GetComponent<CargoStat>();
             currentCargo -= tempStat.cargoWeight;
             //Call CargoList(0)s drop behaviour here.
-            Debug.Log((cargoDropPoint.transform.position - transform.position) * 10f);
+            //Debug.Log((cargoDropPoint.transform.position - transform.position) * 10f);
             cargoList[0].GetComponent<DropBehaviour>().DroppedCargo(cargoDropPoint.transform.position,(cargoDropPoint.transform.position - transform.position)*(10f+adjustedSpeed));
             cargoList.RemoveAt(0);
+            GameData.Instance.SetCargo(cargoList);
         }
     }
 

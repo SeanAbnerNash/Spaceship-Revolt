@@ -11,6 +11,7 @@ public class StationManager : MonoBehaviour
     public int commonGrouping = 5; //2 Workers
 
     public GameObject WorkerPrefab;
+    public GameObject ResearchPrefab;
 
 
 
@@ -20,6 +21,7 @@ public class StationManager : MonoBehaviour
     {
         roomReference = gameObject.transform.Find("RoomZones");
         ScatterWorkers();
+        PlaceResearch();
     }
 
     public void ScatterWorkers()
@@ -40,6 +42,40 @@ public class StationManager : MonoBehaviour
             {
                 PlaceWorkers(1f, 2);
             }
+        }
+    }
+
+    public void PlaceResearch()
+    {
+        //Make a list of rooms to be shuffled through. There can only be a max of 1 research thing per room.
+        List<int> roomRefList = new List<int>();
+        for (int i = 0; i < roomReference.childCount; i++)
+        {
+            roomRefList.Add(i);
+        }
+
+        //Place Research Items
+        for (int i = 0; i < ResearchManager.current.techList.researchList.Count; i++)
+        {
+            int randomRoom = Random.Range(0, roomReference.childCount);
+            Transform room = roomReference.GetChild(randomRoom);
+            RectTransform tempRect = room.GetComponent<RectTransform>();
+
+            //Generate Random Point in this room with room for circle
+            //First find the bounds. Then
+            float roomWidth = tempRect.sizeDelta.x;
+            float roomLength = tempRect.sizeDelta.y;
+
+            float grouping = 1f;
+
+            Vector2 randomPoint = new Vector2(0f, 0f);
+            randomPoint.x = Random.Range(0.0f + grouping, roomWidth - grouping);
+            randomPoint.y = Random.Range(0.0f + grouping, roomLength - grouping);
+
+            Vector2 centrePoint = randomPoint + Random.insideUnitCircle * grouping;
+            GameObject tempWorker = Instantiate(ResearchPrefab, (Vector2)room.transform.TransformPoint(Vector2.zero + centrePoint), Quaternion.identity);
+            tempWorker.transform.GetComponent<ResearchObject>().SetID(ResearchManager.current.techList.researchList[i].researchID);
+
         }
     }
 

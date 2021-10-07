@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Station
+  - Worker
+  - Research
+  - WarCentre
   layers:
   - Default
   - TransparentFX

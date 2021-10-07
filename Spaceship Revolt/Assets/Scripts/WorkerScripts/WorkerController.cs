@@ -21,7 +21,7 @@ public class WorkerController : MonoBehaviour
     public void StaticLock()
     {
         Rigidbody2D tempReference = gameObject.GetComponent<Rigidbody2D>();
-        tempReference.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        tempReference.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     public void SetAllignment(bool align)
